@@ -30,6 +30,19 @@ CREATE TABLE IF NOT EXISTS `book`.`booking` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+drop table user;
+CREATE TABLE IF NOT EXISTS `book`.`user` (
+  `userId` INT NOT NULL auto_increment,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `role` enum('admin','lecturer','student') NOT NULL,
+  `createdOn` datetime default now(),
+  `updatedOn` datetime on update now(),
+  PRIMARY KEY (`userId`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+ENGINE = InnoDB;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
