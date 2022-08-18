@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `book`.`user` (
   `email` VARCHAR(50) NOT NULL,
   `role` enum('admin','lecturer','student') NOT NULL,
   `createdOn` datetime default now(),
-  `updatedOn` datetime on update now(),
+  `updatedOn` datetime on update current_timestamp default current_timestamp,
   PRIMARY KEY (`userId`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
